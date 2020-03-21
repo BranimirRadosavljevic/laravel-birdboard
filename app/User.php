@@ -40,6 +40,6 @@ class User extends Authenticatable
 
     public function projects()
     {
-        return $this->HasMany(Project::class, 'owner_id');
+        return $this->HasMany(Project::class, 'owner_id')->latest('updated_at');
     }
 }
