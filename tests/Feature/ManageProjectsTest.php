@@ -52,7 +52,7 @@ class ManageProjectsTest extends TestCase
     }
 
     /** @test */
-    public function a_user_can_update_a_project(Type $var = null)
+    public function a_user_can_update_a_project()
     {
         $project = ProjectFactory::create();
 
@@ -64,6 +64,17 @@ class ManageProjectsTest extends TestCase
             ->assertRedirect($project->path());
 
         $this->get($project->path() . '/edit')->assertOk();
+
+        $this->assertDatabaseHas('projects', $attributes);
+    }
+
+    /** @test */
+    public function a_user_can_update_a_projects_general_notes()
+    {
+        $project = ProjectFactory::create();
+
+        $this->actingAs($project->owner)
+            ->patch($project->path(), $attributes = ['notes' => 'Changed']);
 
         $this->assertDatabaseHas('projects', $attributes);
     }
