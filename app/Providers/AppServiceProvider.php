@@ -28,8 +28,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Schema::defaultStringLength(191);
-        Project::observe(ProjectObserver::class);
-        Task::observe(TaskObserver::class);
+        Schema::defaultStringLength(191);       
     }
 }

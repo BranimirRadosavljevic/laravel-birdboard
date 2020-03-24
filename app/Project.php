@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    protected $guarded = [];
+    use RecordsActivity;
 
-    public $old = [];
+    protected $guarded = [];    
 
     public function path()
     {
@@ -28,25 +28,7 @@ class Project extends Model
     public function addTask($body)
     {
         return $this->tasks()->create(compact('body'));
-    }
-
-    public function recordActivity($description)
-    {          
-        $this->activity()->create([
-            'description' => $description,
-            'changes' => $this->activityChanges($description) 
-        ]);        
-    }
-
-    public function activityChanges($description)
-    {
-        if ($description == 'updated') {            
-            return [
-                'before'=> array_diff($this->old, $this->getAttributes()),
-                'after' => $this->getChanges()
-            ];
-        }
-    }
+    } 
 
     public function activity()
     {
