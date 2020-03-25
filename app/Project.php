@@ -8,7 +8,8 @@ class Project extends Model
 {
     use RecordsActivity;
 
-    protected $guarded = [];    
+    protected $guarded = [];
+
 
     public function path()
     {
@@ -17,7 +18,7 @@ class Project extends Model
 
     public function owner()
     {
-        return $this->belongsTo(User::class);   
+        return $this->belongsTo(User::class);
     }
 
     public function tasks()
@@ -28,7 +29,7 @@ class Project extends Model
     public function addTask($body)
     {
         return $this->tasks()->create(compact('body'));
-    } 
+    }
 
     public function activity()
     {
