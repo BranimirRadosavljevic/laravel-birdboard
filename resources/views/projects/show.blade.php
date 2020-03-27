@@ -3,8 +3,8 @@
 
 <header class="flex item-center mb-3 py-4">
     <div class="flex justify-between items-end w-full">
-        <p class="text-grey text-sm font-normal">
-            <a href="/projects" class="text-grey text-sm font-normal no-underline">My Projects</a>/ {{$project->title}}
+        <p class="text-default text-sm font-normal">
+            <a href="/projects" class="text-default text-sm font-normal no-underline">My Projects</a>/ {{$project->title}}
         </p>
 
         <div class="flex items-center">
@@ -26,15 +26,15 @@
     <div class="lg:flex -mx-3">
         <div class="lg:w-3/4 px-3 mb-6">
             <div class="mb-8">
-                <h2 class="text-base text-grey font-normal mb-3">Tasks</h2>
+                <h2 class="text-base text-default font-normal mb-3">Tasks</h2>
 
                 @foreach ($project->tasks as $task)
                     <div class="card mb-3">
                         <form method="POST" action="{{ $task->path()}}" >
                             @method('PATCH')
                             @csrf
-                            <div class="flex">
-                                <input value="{{ $task->body }}" name="body" class="w-full {{ $task->completed ? 'text-grey' : ''}}">
+                            <div class="flex items-center">
+                                <input value="{{ $task->body }}" name="body" class="bg-card text-default w-full {{ $task->completed ? 'text-default' : ''}}">
                                 <input type="checkbox" name="completed" onChange="this.form.submit()" {{ $task->completed ? 'checked' : ''}}>
                             </div> 
                         </form>
@@ -47,7 +47,7 @@
                 <div class="card mb-3">
                     <form action="{{$project->path() . '/tasks'}}" method="POST">
                         @csrf
-                        <input placeholder="Add a new task..." class="w-full" name="body">
+                        <input placeholder="Add a new task..." class="bg-card text-default w-full" name="body">
                     </form>
                 </div>
                 
