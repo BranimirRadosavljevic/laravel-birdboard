@@ -5,7 +5,7 @@
         <input 
             type="text" 
             name="title" 
-            class="input bg-transparent border border-grey-light rounded p-2 text-xs w-full"
+            class="input bg-transparent border border-muted-light rounded p-2 text-xs w-full"
             required                
             value="{{$project->title}}">
     </div>
@@ -15,7 +15,7 @@
     <div class="control">
         <textarea name="description"
             rows="10" 
-            class="textarea bg-transparent border border-grey-light rounded p-2 text-xs w-full"
+            class="textarea bg-transparent border border-muted-light rounded p-2 text-xs w-full"
             required
             >{{$project->description}}
         </textarea>
@@ -24,7 +24,7 @@
 <div class="field">
     <div class="control">
         <button type="submit" class="button is-link mr-2">{{$buttonText}}</button>
-        <a href="{{ $project->path()}}}">Cancel</a>
+        <a href="{{ $project->path()}}" class="text-default">Cancel</a>
     </div>
 </div>
 
